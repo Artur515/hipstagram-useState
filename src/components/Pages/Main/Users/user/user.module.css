@@ -1,0 +1,25 @@
+.user_card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 25px;
+    border-bottom: 2px solid black;
+}
+
+.user_image {
+    max-width: 150px;
+    cursor: pointer;
+}
+
+.button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+@media (max-width: 735px) {
+    .user_card{
+        flex-wrap: wrap;
+    }
+}

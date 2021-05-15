@@ -1,0 +1,13 @@
+.feed {
+    width: 100%;
+}
+
+.feed_image {
+    display: flex;
+    justify-content: center;
+
+}
+
+.feed_image_photo {
+    max-width: 60%;
+}

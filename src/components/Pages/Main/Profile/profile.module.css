@@ -1,0 +1,57 @@
+.profile {
+    margin-top: 50px;
+    width: 1200px;
+}
+
+.profile_header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+}
+
+.avatar {
+    width: 160px;
+    border-radius: 80px;
+    margin-bottom: 50px;
+}
+
+.posts {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.posts h5 {
+    margin-left: 15px;
+}
+
+.feed_gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.image {
+    max-width: 30%;
+    margin: 15px;
+}
+
+.create_post {
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.create_post a {
+    transition: .2s linear;
+}
+
+.create_post a:hover {
+    border-bottom: 1px solid black;
+    transition: .2s linear;
+}
+
+.login {
+    cursor: pointer;
+}

@@ -1,0 +1,27 @@
+.form {
+    margin: 50px 25px 0 25px;
+    width: 75%;
+    text-align: center;
+}
+.button{
+    border: 0;
+    background:transparent;
+}
+.button:hover{
+    border-bottom: 1px solid black;
+}
+
+.upload_file{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.avatar{
+    max-width: 150px;
+}
+.p {
+    color: red;
+    font-size: 18px;
+}
+

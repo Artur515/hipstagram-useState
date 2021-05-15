@@ -1,0 +1,28 @@
+.link a {
+    font-size: 28px;
+    padding: 0 20px;
+}
+
+.logo_title {
+  margin-left: 10px;
+}
+@media (max-width: 500px) {
+    .link a {
+        padding: 0 5px;
+    }
+
+    .logo_title {
+        font-size: 26px;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .link {
+        border-right: .5px solid black;
+    }
+
+    .link a {
+        font-size: 18px;
+    }
+}
