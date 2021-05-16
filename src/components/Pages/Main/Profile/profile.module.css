@@ -22,6 +22,10 @@
     justify-content: space-between;
 }
 
+.posts_item {
+    cursor: pointer;
+}
+
 .posts h5 {
     margin-left: 15px;
 }
@@ -54,4 +58,9 @@
 
 .login {
     cursor: pointer;
+}
+
+.follower_title {
+    display: flex;
+    justify-content: space-around;
 }

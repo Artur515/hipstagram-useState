@@ -14,7 +14,7 @@ const UserProfile = (props) => {
     const [user, setUser] = useState(null)
     const [followers, setFollowers] = useState(null)
 
-
+    console.log(followers)
     const back = props.history.goBack
 
 
@@ -68,18 +68,23 @@ const UserProfile = (props) => {
                                   style={{display: followers ? 'block' : 'none', cursor: 'pointer'}}>
                                     ?
                                 </span>
-                            {/*modal */}
+                            {/*modal*/}
 
-                            {followers ? followers.map((follower) => {
-                                return (
-                                    <div id="modal1" className="modal">
-                                        <div className="modal-content">
-                                            <h4>{follower.login}</h4>
-                                            <p>{follower.email}</p>
-                                        </div>
-                                    </div>
-                                )
-                            }) : ''}
+
+                            <div id="modal1" className="modal">
+                                <div className="modal-content">
+                                    {/*watch followers*/}
+                                    {followers ? followers.map((follower) => {
+                                        return (
+                                            <div key={follower.id} className={style.followers_title}>
+                                                <h4>{follower.login}</h4>
+                                                <h4>{follower.email}</h4>
+                                            </div>
+                                        )
+                                    }) : ''}
+                                </div>
+                            </div>
+
 
                             {/*  modal  */}
                         </div>

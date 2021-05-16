@@ -20,11 +20,17 @@ const Profile = () => {
         M.Modal.getInstance(modal).open()
     }
 
+    //get current user every click
     useEffect(() => {
         getCurrentUser()
             .then(response => setCurrentUser(response.data))
             .catch(error => M.toast({html: error, classes: '#c628282 red darken-3'}))
     }, [])
+
+    const handleModalFollowers = () => {
+        const modal = document.querySelector('#modal_follow')
+        M.Modal.getInstance(modal).open()
+    }
 
     // console.log(currentUser)
     if (currentUser.length !== 0) {
@@ -56,8 +62,23 @@ const Profile = () => {
                         </h3>
                         <div className={style.posts}>
                             <h5>{posts.length}:posts</h5>
-                            <h5 className={style.posts_item}>{followers.length}:followers</h5>
+                            <h5 onClick={() => handleModalFollowers()}
+                                className={style.posts_item}>{followers.length}:followers</h5>
                         </div>
+                        {/*modal followers*/}
+                        <div id="modal_follow" className="modal">
+                            <div className="modal-content">
+                                {currentUser.followers.map((follower) => {
+                                    return (
+                                        <div key={follower.id} className={style.follower_title}>
+                                            <h4>{follower.login}</h4>
+                                            <h4>{follower.email}</h4>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        {/*modal followers end*/}
                     </div>
                 </div>
                 <div className={style.create_post}>
