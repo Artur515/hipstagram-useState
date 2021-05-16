@@ -29,3 +29,7 @@ export const createPost = (data) => {
 export const likePost = (id) => {
     return axios.get(API_URL + '/posts/like/' + id, {headers: headers})
 }
+
+export const getFollowersAndFollowingOfUserByUserId = (id) => {
+    return axios.get(API_URL + '/users/followersAndFollowing/' + id, {headers: headers})
+}

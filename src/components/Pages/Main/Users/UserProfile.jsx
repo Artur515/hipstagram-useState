@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import style from './userProfile.module.css'
 import Loader from "../../../../helpers/loader/Loader";
 import Feed from "../Feeds/Feed";
-import {getUserById} from "../../../../services/hipstagramService";
+import {getFollowersAndFollowingOfUserByUserId, getUserById} from "../../../../services/hipstagramService";
+import M from "materialize-css";
+
 
 const defaultAvatar = 'https://www.irishrsa.ie/wp-content/uploads/2017/03/default-avatar.png'
 
@@ -10,6 +12,9 @@ const defaultAvatar = 'https://www.irishrsa.ie/wp-content/uploads/2017/03/defaul
 const UserProfile = (props) => {
     const id = props.match.params.id
     const [user, setUser] = useState(null)
+    const [followers, setFollowers] = useState(null)
+
+
     const back = props.history.goBack
 
 
@@ -17,6 +22,21 @@ const UserProfile = (props) => {
         getUserById(id)
             .then(response => setUser(response.data))
     }, [id])
+
+    useEffect(() => {
+        M.AutoInit();
+    });
+
+    const handleFollowers = (id) => {
+        getFollowersAndFollowingOfUserByUserId(id)
+            .then(response => setFollowers(response.data.followers))
+    }
+
+
+    const handleModalFollowers = () => {
+        const modal = document.querySelector('#modal1')
+        M.Modal.getInstance(modal).open()
+    }
 
     const handleGoBackPage = () => {
         back()
@@ -41,7 +61,27 @@ const UserProfile = (props) => {
                         </h3>
                         <div className={style.posts}>
                             <h5>{user.posts.length ? user.posts.length : ''}:posts</h5>
-                            <h5 className={style.posts_item}>{user.followersCount ? user.followersCount : ''}:followers</h5>
+                            <h5 className={style.posts_item} onClick={() => handleFollowers(id)}>
+                                {user.followersCount ? user.followersCount : ''}:followers
+                            </h5>
+                            <span onClick={() => handleModalFollowers()}
+                                  style={{display: followers ? 'block' : 'none', cursor: 'pointer'}}>
+                                    ?
+                                </span>
+                            {/*modal */}
+
+                            {followers ? followers.map((follower) => {
+                                return (
+                                    <div id="modal1" className="modal">
+                                        <div className="modal-content">
+                                            <h4>{follower.login}</h4>
+                                            <p>{follower.email}</p>
+                                        </div>
+                                    </div>
+                                )
+                            }) : ''}
+
+                            {/*  modal  */}
                         </div>
                     </div>
                 </div>
