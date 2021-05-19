@@ -12,13 +12,19 @@ const defaultAvatar = "https://www.irishrsa.ie/wp-content/uploads/2017/03/defaul
 const Profile = () => {
     const [currentUser, setCurrentUser] = useState([])
 
+
+
+
+
     useEffect(() => {
         M.AutoInit();
     });
+
     const handleModal = () => {
         const modal = document.querySelector('#modal')
         M.Modal.getInstance(modal).open()
     }
+
 
     //get current user every click
     useEffect(() => {
@@ -26,6 +32,8 @@ const Profile = () => {
             .then(response => setCurrentUser(response.data))
             .catch(error => M.toast({html: error, classes: '#c628282 red darken-3'}))
     }, [])
+
+
 
     const handleModalFollowers = () => {
         const modal = document.querySelector('#modal_follow')

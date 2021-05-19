@@ -5,53 +5,70 @@ import {likePost} from "../../../../services/hipstagramService";
 
 
 const Feed = ({post}) => {
-    const [liked, setLiked] = useState(post.likes !== [] ? true : false)
 
 
-    useEffect(() => {
-        M.AutoInit();
-    });
-
-    const handleImage = () => {
-        const elem = document.querySelector('#image')
-        M.Materialbox.getInstance(elem);
-    }
-    const likedStyle = {
-        color: 'red'
-    }
-    const unLikedStyle = {
-        color: 'black'
-    }
-
-    const handleLikePost = (id) => {
-        likePost(id)
-            .then(response => response.data.status === 'liked' ? setLiked(true) : setLiked(false))
-            .catch(error => {
-                M.toast({html: error, classes: '#c628282 red darken-3'})
-            })
-    }
+        // for liked color 'red' or 'black'
+        const [liked] = useState(() => {
+            return post.likes.length ? true : false
+        })
 
 
-    return (
-        <div key={post._id} className='feed'>
-            <div className='card feed_card'>
-                <h6>{post.ownerId}</h6>
-                <div className="card-image">
-                    <img className="materialboxed"
-                         id='image'
-                         onClick={handleImage}
-                         src={post.imgUrl}
-                         alt="post"/>
-                </div>
-                <div className="card-content">
-                    <i onClick={() => handleLikePost(post._id)} className="material-icons"
-                       style={liked ? likedStyle : unLikedStyle}>favorite_border</i>
-                    <p>{post.title}</p>
-                    <input type="text" placeholder='add a comment'/>
+//my custom state for origin user posts
+        const [watchLikes, setWatchLikes] = useState(post.likes.length)
+        const [myLike, setMyLike] = useState('')
+
+
+        const handleLikePost = (id) => {
+            likePost(id)
+                .then(response => response.data.status === 'liked' ? setMyLike('liked') || setWatchLikes((watchLikes) => watchLikes + 1)
+                    : setMyLike('unliked') || setWatchLikes((watchLikes) => watchLikes - 1))
+                .catch(error => {
+                    M.toast({html: error, classes: '#c628282 red darken-3'})
+                })
+        }
+
+        console.log(myLike)
+
+        useEffect(() => {
+            M.AutoInit();
+        });
+
+        const handleImage = () => {
+            const elem = document.querySelector('#image')
+            M.Materialbox.getInstance(elem);
+        }
+        const likedStyle = {
+            color: 'red'
+        }
+        const unLikedStyle = {
+            color: 'black'
+        }
+
+        return (
+            <div key={post._id} className='feed'>
+                <div className='card feed_card'>
+                    <h6>{post.ownerId}</h6>
+                    <div className="card-image">
+                        <img className="materialboxed"
+                             id='image'
+                             onClick={handleImage}
+                             src={post.imgUrl}
+                             alt="post"/>
+                    </div>
+                    <div className="card-content">
+                        <i className="material-icons"
+                           onClick={() => handleLikePost(post._id)}
+                           style={liked ? likedStyle : unLikedStyle}>favorite_border</i>
+                        {watchLikes}
+                        {myLike === 'liked' ? <i className="material-icons">thumb_up</i> :
+                            <i className="material-icons">thumb_down</i>}
+                        <p>{post.title}</p>
+                        <input type="text" placeholder='add a comment'/>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+;
 
 export default Feed;

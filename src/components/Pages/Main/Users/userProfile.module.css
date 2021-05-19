@@ -45,6 +45,7 @@
 .span{
     cursor: pointer;
     border-bottom:1px solid black ;
+    font-size: 40px;
 }
 .followers_title{
     display: flex;
