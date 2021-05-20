@@ -2,32 +2,29 @@ import React, {useEffect, useState} from 'react';
 import './feed.css'
 import M from 'materialize-css'
 import {likePost} from "../../../../services/hipstagramService";
+import Comment from "../comment/Comment";
 
 
 const Feed = ({post}) => {
+        // for likes color 'red' or 'black'
+    console.log(post)
 
-
-        // for liked color 'red' or 'black'
-        const [liked] = useState(() => {
-            return post.likes.length ? true : false
-        })
-
-
-//my custom state for origin user posts
+        //my custom state for origin user posts
         const [watchLikes, setWatchLikes] = useState(post.likes.length)
         const [myLike, setMyLike] = useState('')
 
 
         const handleLikePost = (id) => {
             likePost(id)
-                .then(response => response.data.status === 'liked' ? setMyLike('liked') || setWatchLikes((watchLikes) => watchLikes + 1)
-                    : setMyLike('unliked') || setWatchLikes((watchLikes) => watchLikes - 1))
+                .then(response => response.data.status === 'liked' ? setMyLike('liked') ||
+                    setWatchLikes((watchLikes) => watchLikes + 1)
+                    : setMyLike('unliked')
+                    || setWatchLikes((watchLikes) => watchLikes - 1))
                 .catch(error => {
                     M.toast({html: error, classes: '#c628282 red darken-3'})
                 })
         }
 
-        console.log(myLike)
 
         useEffect(() => {
             M.AutoInit();
@@ -58,12 +55,12 @@ const Feed = ({post}) => {
                     <div className="card-content">
                         <i className="material-icons"
                            onClick={() => handleLikePost(post._id)}
-                           style={liked ? likedStyle : unLikedStyle}>favorite_border</i>
+                           style={watchLikes !== 0 ? likedStyle : unLikedStyle}>favorite_border</i>
                         {watchLikes}
                         {myLike === 'liked' ? <i className="material-icons">thumb_up</i> :
                             <i className="material-icons">thumb_down</i>}
                         <p>{post.title}</p>
-                        <input type="text" placeholder='add a comment'/>
+                        <Comment id={post._id}/>
                     </div>
                 </div>
             </div>

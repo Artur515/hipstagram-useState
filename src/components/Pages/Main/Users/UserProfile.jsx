@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import style from './userProfile.module.css'
 import Loader from "../../../../helpers/loader/Loader";
-import {getFollowersAndFollowingOfUserByUserId, getUserById, likePost} from "../../../../services/hipstagramService";
+import {getFollowersAndFollowingOfUserByUserId, getUserById} from "../../../../services/hipstagramService";
 import M from "materialize-css";
 import Feed from "../Feeds/Feed";
 
@@ -13,11 +13,6 @@ const UserProfile = (props) => {
         const id = props.match.params.id
         const [user, setUser] = useState(null)
         const [followers, setFollowers] = useState(null)
-
-
-
-
-
 
 
 //router dom go back
