@@ -46,3 +46,8 @@ export const getCommentsByPostId = (id) => {
 export const updateCommentText = (id, data) => {
     return axios.patch(API_URL + '/comments/' + id, {data}, {headers: headers})
 }
+
+
+export const deleteCommentByCommentId = (id) => {
+    return axios.delete(API_URL + '/comments/' + id, {headers: headers})
+}

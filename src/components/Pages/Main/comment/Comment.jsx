@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {createComment, getCommentsByPostId} from "../../../../services/hipstagramService";
-import style from './comment.module.css'
 import CommentRead from "./commentRead/CommentRead";
 import M from "materialize-css";
 
@@ -42,9 +41,9 @@ const Comment = ({id}) => {
         return (
             <div>
                 <input onChange={e => setInputComment(e.target.value)} type="text" placeholder='add a comment'/>
-                <div className={style.btns_display}>
+                <div>
                     <button onClick={handleSendComment} className='waves-effect btn' style={btnStyle}>Add comment</button>
-                    {commentById.length ? <CommentRead commentById={commentById}/> : ''}
+                    {commentById.length ? <CommentRead commentById={commentById} id={id}/> : ''}
                 </div>
             </div>
         );

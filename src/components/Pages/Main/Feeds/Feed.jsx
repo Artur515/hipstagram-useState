@@ -7,7 +7,8 @@ import Comment from "../comment/Comment";
 
 const Feed = ({post}) => {
         // for likes color 'red' or 'black'
-    console.log(post)
+        // console.log(post)
+
 
         //my custom state for origin user posts
         const [watchLikes, setWatchLikes] = useState(post.likes.length)

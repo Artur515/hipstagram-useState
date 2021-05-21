@@ -1,55 +1,47 @@
-import React, {useEffect} from 'react';
-import M from "materialize-css";
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import style from './commentRead.module.css'
 
 const btnStyle = {
     background: 'transparent',
     color: 'black',
     border: '0'
 }
-const style_div = {
-    borderBottom: '1px solid black',
-    alignItems: 'center',
-    textAlign: 'center'
-}
 
-const CommentRead = ({commentById}) => {
+const CommentRead = ({commentById, id}) => {
+    const [comments, setComments] = useState([])
+    const [toggle, setToggle] = useState(false)
+    console.log(comments)
 
-    console.log(commentById)
-
-    useEffect(() => {
-        M.AutoInit();
-    });
-
-
-    const handleModal = () => {
-        const modal = document.querySelector('#modal3')
-        M.Modal.getInstance(modal).open()
+    const handleModal = (id) => {
+        setComments(commentById.filter((com => com.postId === id)))
+        setToggle(!toggle)
     }
 
-
-    return (<>
-        <button onClick={handleModal} className='waves-effect btn' style={btnStyle}>Read comments</button>
-        <div id="modal3" className="modal">
-            <div className="modal-content">
-                {commentById.map((comment) => {
-                    return (
-                        <div style={style_div} key={comment.id}>
-                            <div style={{display: 'flex', alignItems: 'center'}}>
-                                <Link to={'/users/' + comment.owner.id}>
-                                    <img style={{width: '100px', marginTop: '5px'}}
-                                         src={comment.owner.avatar}
+    return (<div>
+        <button onClick={() => handleModal(id)} className='waves-effect btn' style={btnStyle}>
+            {toggle ? 'Close' : 'Read comments'}
+        </button>
+        <div className={toggle ? 'show-on-medium' : 'hide-on-med-and-up hide-on-med-and-down'}>
+            {comments.map((comment) => {
+                console.log(comment)
+                return (
+                    <div key={comment.id}>
+                        <div className={style.content}>
+                            <div className={style.title}>
+                                <Link to={'/users/' + comment.owner.id !== id}>
+                                    <img className={style.avatar} src={comment.owner.avatar}
                                          alt={comment.owner.login}/>
                                 </Link>
-                                <h4>{comment.owner.login}</h4>
+                                <h4 className={style.login}>{comment.owner.login}</h4>
                             </div>
-                            <span>comment:{comment.text}</span>
+                            <span className={style.text}>comment:{comment.text}</span>
                         </div>
-                    )
-                })}
-            </div>
+                    </div>
+                )
+            })}
         </div>
-    </>);
+    </div>);
 };
 
 export default CommentRead;
