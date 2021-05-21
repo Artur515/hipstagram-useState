@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import style from './commentRead.module.css'
+import {deleteCommentByCommentId} from "../../../../../services/hipstagramService";
 
 const btnStyle = {
     background: 'transparent',
@@ -18,6 +19,12 @@ const CommentRead = ({commentById, id}) => {
         setToggle(!toggle)
     }
 
+    const handleDeleteComment = (id) => {
+        deleteCommentByCommentId(id)
+            .then(setComments(commentById))
+    }
+
+
     return (<div>
         <button onClick={() => handleModal(id)} className='waves-effect btn' style={btnStyle}>
             {toggle ? 'Close' : 'Read comments'}
@@ -27,9 +34,10 @@ const CommentRead = ({commentById, id}) => {
                 console.log(comment)
                 return (
                     <div key={comment.id}>
+                        <i className='material-icons' onClick={()=>handleDeleteComment(comment.id)}>delete</i>
                         <div className={style.content}>
                             <div className={style.title}>
-                                <Link to={'/users/' + comment.owner.id !== id}>
+                                <Link to={'/users/' + comment.owner.id}>
                                     <img className={style.avatar} src={comment.owner.avatar}
                                          alt={comment.owner.login}/>
                                 </Link>

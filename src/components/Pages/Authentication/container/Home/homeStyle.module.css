@@ -19,3 +19,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media (max-width: 540px) {
+.head{
+    flex-direction: column;
+}
+}
