@@ -11,7 +11,7 @@ import {registrationCurrentUser} from "../../../../../services/authentication_se
 
 let schema = yup.object().shape({
     name: yup.string().required().min(4),
-    password: yup.string().required().min(8).max(16).matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]$"),
+    password: yup.string().required().min(8).max(16),
     email: yup.string().required("Please enter email").email(),
 });
 

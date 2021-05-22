@@ -27,13 +27,12 @@ const ProfileForm = () => {
             .then(response => setCurrentUser(response.data))
     }, [])
 
-
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema),
     });
 
     const onSubmit = (data) => {
-        console.log(avatar)
+        console.log(data)
         const {login, firstName, lastName, email} = data
 
         const requestBody = {
@@ -43,6 +42,8 @@ const ProfileForm = () => {
             email: email,
             avatar: avatar.imagePreview
         }
+        console.log(requestBody)
+
         if (login && firstName && lastName && email && avatar) {
             updateCurrentUser(requestBody)
                 .then(response => setCurrentUser(response))
@@ -72,7 +73,6 @@ const ProfileForm = () => {
             return setAvatar({
                 imagePreview: avatar
             })
-
         }
     }
 
@@ -93,24 +93,24 @@ const ProfileForm = () => {
                      alt="avatar"/>
             </div>
             <label>Login</label>
-            <input type='text' name='login' placeholder='Login'  {...register("login", {required: true})}/>
+            <input type='text' placeholder='Login' name='login'  {...register("login")}/>
             <div className={style.p}>
                 {errors.login && errors.message}
             </div>
             <label>First name</label>
-            <input type='text' placeholder='First name' name='firstName'{...register("firstName", {required: true})}/>
+            <input type='text' placeholder='First name' name='firstName'{...register("firstName")}/>
             <div className={style.p}>
                 {errors.firstName && errors.message}
             </div>
             <label>Last name</label>
-            <input type='text' placeholder='Last name' name='lastName' {...register("Last name", {required: true})}/>
+            <input type='text' placeholder='Last name' name='lastName' {...register("lastName")}/>
             <div className={style.p}>
-                {errors.lastName &&  errors.message}
+                {errors.lastName && errors.message}
             </div>
             <label>Email</label>
-            <input type='email' placeholder='Email' name='email' {...register("Email", {required: true})}/>
+            <input type='email' placeholder='Email' name='email' {...register("email")}/>
             <div className={style.p}>
-                {errors.email &&  errors.message}
+                {errors.email && errors.message}
             </div>
             <button className={style.button}>Save</button>
         </form>
