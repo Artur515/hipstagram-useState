@@ -14,16 +14,17 @@ const Comment = ({id}) => {
         const [inputComment, setInputComment] = useState('')
         const [createdComment, setCreatedComment] = useState('')
         const [commentById, setCommentById] = useState([])
+        const inputs = document.querySelectorAll('input')
 
 
         const handleSendComment = () => {
-            const input = document.querySelector('input')
             if (inputComment === '') {
                 M.toast({html: 'Need to write anything', classes: '#c628282 red darken-3'})
             } else {
                 createComment({postId: id, text: inputComment})
                     .then(response => setCreatedComment(response.data))
-                    .then(input.value = '')
+                    .then(inputs.forEach(input => input.value = ''))
+                    .then(M.toast({html: "YOUR ARE ADDED COMMENT ", classes: '#c628282 green darken-3'}))
                     .catch(error => {
                         M.toast({html: error, classes: '#c628282 red darken-3'})
                     })
