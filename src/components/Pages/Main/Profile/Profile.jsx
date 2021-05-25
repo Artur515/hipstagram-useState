@@ -13,9 +13,6 @@ const Profile = () => {
     const [currentUser, setCurrentUser] = useState([])
 
 
-
-
-
     useEffect(() => {
         M.AutoInit();
     });
@@ -32,7 +29,6 @@ const Profile = () => {
             .then(response => setCurrentUser(response.data))
             .catch(error => M.toast({html: error, classes: '#c628282 red darken-3'}))
     }, [])
-
 
 
     const handleModalFollowers = () => {
@@ -58,7 +54,7 @@ const Profile = () => {
                         <div className="modal-content">
                             <h4>{firstName ? firstName : 'First name'}</h4>
                             <h4>{lastName ? lastName : 'Last name'}</h4>
-                            <h5>{email ? email : 'Email'}</h5>
+                            <h6>{email ? email : 'Email'}</h6>
                         </div>
                         <div className="modal-footer">
                             <div className="modal-close waves-effect  btn-flat">Close</div>
@@ -79,8 +75,8 @@ const Profile = () => {
                                 {currentUser.followers.map((follower) => {
                                     return (
                                         <div key={follower.id} className={style.follower_title}>
-                                            <h4>{follower.login}</h4>
-                                            <h4>{follower.email}</h4>
+                                            <h5>{follower.login}</h5>
+                                            <h5>{follower.email}</h5>
                                         </div>
                                     )
                                 })}

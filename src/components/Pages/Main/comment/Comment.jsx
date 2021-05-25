@@ -17,15 +17,16 @@ const Comment = ({id}) => {
 
 
         const handleSendComment = () => {
+            const input = document.querySelector('input')
             if (inputComment === '') {
                 M.toast({html: 'Need to write anything', classes: '#c628282 red darken-3'})
             } else {
                 createComment({postId: id, text: inputComment})
                     .then(response => setCreatedComment(response.data))
+                    .then(input.value = '')
                     .catch(error => {
                         M.toast({html: error, classes: '#c628282 red darken-3'})
                     })
-
             }
         }
 

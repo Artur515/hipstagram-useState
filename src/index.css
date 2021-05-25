@@ -1,5 +1,5 @@
- body {
-    font-family: 'Grand Hotel', cursive;
+body {
+    font-family: 'Dancing Script', cursive;
     width: 100%;
     margin: 0;
     min-height: 100vh;
@@ -7,7 +7,8 @@
     text-rendering: optimizeSpeed;
     line-height: 1.5;
 }
-html{
+
+html {
     font-size: 1.1rem;
 }
 
@@ -16,13 +17,13 @@ img {
     display: block;
 }
 
- input,
- button,
- textarea,
- select {
-     font: inherit;
- }
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
 
- #modal{
-     z-index: 10;
- }
+#modal {
+    z-index: 10;
+}

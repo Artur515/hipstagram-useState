@@ -12,7 +12,7 @@ const btnStyle = {
 const CommentRead = ({commentById, id}) => {
     const [comments, setComments] = useState([])
     const [toggle, setToggle] = useState(false)
-    console.log(comments)
+    // console.log(comments)
 
     const handleModal = (id) => {
         setComments(commentById.filter((com => com.postId === id)))
@@ -21,7 +21,7 @@ const CommentRead = ({commentById, id}) => {
 
     const handleDeleteComment = (id) => {
         deleteCommentByCommentId(id)
-            .then(setComments(commentById))
+            .then(setComments(comments))
     }
 
 
@@ -34,7 +34,7 @@ const CommentRead = ({commentById, id}) => {
                 console.log(comment)
                 return (
                     <div key={comment.id}>
-                        <i className='material-icons' onClick={()=>handleDeleteComment(comment.id)}>delete</i>
+                        <i className='material-icons' onClick={() => handleDeleteComment(comment.id)}>delete</i>
                         <div className={style.content}>
                             <div className={style.title}>
                                 <Link to={'/users/' + comment.owner.id}>

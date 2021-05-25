@@ -63,4 +63,11 @@
 .follower_title {
     display: flex;
     justify-content: space-around;
+    border-bottom: 1px solid black;
+}
+
+@media (max-width: 560px) {
+    .follower_title {
+        flex-wrap: wrap;
+    }
 }

@@ -4,8 +4,9 @@
 }
 
 .logo_title {
-  margin-left: 10px;
+    margin-left: 10px;
 }
+
 @media (max-width: 500px) {
     .link a {
         padding: 0 5px;
@@ -24,5 +25,16 @@
 
     .link a {
         font-size: 18px;
+    }
+}
+
+@media (max-width: 340px) {
+    .link a {
+        padding: 0 5px;
+    }
+
+    .logo_title {
+        font-size: 18px;
+        margin-left: 5px;
     }
 }
