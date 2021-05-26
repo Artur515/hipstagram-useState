@@ -13,7 +13,6 @@ const CommentRead = ({commentById, id}) => {
     const [comments, setComments] = useState([])
     const [toggle, setToggle] = useState(false)
 
-    console.log(comments)
 
     const handleModal = (id) => {
         setComments(commentById.filter((com => com.postId === id)))
@@ -23,6 +22,7 @@ const CommentRead = ({commentById, id}) => {
     const handleDeleteComment = (id) => {
         deleteCommentByCommentId(id)
             .then(setComments(commentById.filter((com => com.id !== id))))
+        setToggle(false)
     }
 
 

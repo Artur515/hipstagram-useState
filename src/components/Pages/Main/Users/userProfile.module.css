@@ -22,7 +22,7 @@
     justify-content: space-between;
 }
 
-.posts_item{
+.posts_item {
     display: flex;
     cursor: pointer;
 }
@@ -42,12 +42,20 @@
     margin: 15px;
 }
 
-.span{
+.span {
     cursor: pointer;
-    border-bottom:1px solid black ;
+    border-bottom: 1px solid black;
     font-size: 40px;
 }
-.followers_title{
+
+.followers_title {
     display: flex;
     justify-content: space-around;
+}
+
+@media (max-width: 420px) {
+    .followers_title {
+        flex-wrap: wrap;
+        border-bottom: 1px solid black;
+    }
 }

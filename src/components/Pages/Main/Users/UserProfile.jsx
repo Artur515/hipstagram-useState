@@ -80,8 +80,8 @@ const UserProfile = (props) => {
                                         {followers ? followers.map((follower) => {
                                             return (
                                                 <div key={follower.id} className={style.followers_title}>
-                                                    <h4>{follower.login}</h4>
-                                                    <h4>{follower.email}</h4>
+                                                    <h5>{follower.login}</h5>
+                                                    <h5>{follower.email}</h5>
                                                 </div>
                                             )
                                         }) : ''}
