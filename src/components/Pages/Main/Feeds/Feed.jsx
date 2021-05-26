@@ -5,14 +5,18 @@ import {likePost} from "../../../../services/hipstagramService";
 import Comment from "../comment/Comment";
 
 
-const Feed = ({post}) => {
+const Feed = ({post, id}) => {
         // for likes color 'red' or 'black'
         // console.log(post)
 
         //my custom state for origin user posts
         const [watchLikes, setWatchLikes] = useState(post.likes.length)
-        const [myLike, setMyLike] = useState('')
+        const [myLike, setMyLike] = useState(() => {
+            let my = post.likes.filter(like => like._id === id)
+            return my.length ? 'liked' : 'unliked'
+        })
 
+        // console.log(myLike)
 
         const handleLikePost = (id) => {
             likePost(id)

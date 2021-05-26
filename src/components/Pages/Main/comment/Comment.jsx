@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {createComment, getCommentsByPostId} from "../../../../services/hipstagramService";
+import {createComment, deleteCommentByCommentId, getCommentsByPostId} from "../../../../services/hipstagramService";
 import CommentRead from "./commentRead/CommentRead";
 import M from "materialize-css";
 
@@ -30,6 +30,14 @@ const Comment = ({id}) => {
                     })
             }
         }
+        //to delete comment
+        const handleDeleteComment = (id) => {
+            deleteCommentByCommentId(id)
+                .then(setCommentById(commentById.filter(comment => comment.id !== id)))
+                .catch(error => {
+                    M.toast({html: error, classes: '#c628282 red darken-3'})
+                })
+        }
 
 
         useEffect(() => {
@@ -47,7 +55,7 @@ const Comment = ({id}) => {
                 <div>
                     <button onClick={handleSendComment} className='waves-effect btn' style={btnStyle}>Add comment</button>
                     {commentById.length ?
-                        <CommentRead commentById={commentById} id={id}/> : ''}
+                        <CommentRead commentById={commentById} handleDeleteComment={handleDeleteComment} id={id}/> : ''}
                 </div>
             </div>
         );

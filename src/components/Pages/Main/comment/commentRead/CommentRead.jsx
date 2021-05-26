@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import style from './commentRead.module.css'
-import {deleteCommentByCommentId} from "../../../../../services/hipstagramService";
+
 
 const btnStyle = {
     background: 'transparent',
@@ -9,7 +9,7 @@ const btnStyle = {
     border: '0'
 }
 
-const CommentRead = ({commentById, id}) => {
+const CommentRead = ({commentById, id, handleDeleteComment}) => {
     const [comments, setComments] = useState([])
     const [toggle, setToggle] = useState(false)
 
@@ -18,12 +18,6 @@ const CommentRead = ({commentById, id}) => {
         setComments(commentById.filter((com => com.postId === id)))
         setToggle(!toggle)
     }
-
-    const handleDeleteComment = (id) => {
-        deleteCommentByCommentId(id)
-            .then(setComments(commentById.filter((com => com.id !== id))))
-    }
-
 
     return (<div>
         <button onClick={() => handleModal(id)} className='waves-effect btn' style={btnStyle}>
@@ -34,7 +28,7 @@ const CommentRead = ({commentById, id}) => {
                 return (
                     <div key={comment.id}>
                         <i className='material-icons' style={{cursor: 'pointer'}}
-                           onClick={() => handleDeleteComment(comment.id)}>delete</i>
+                           onClick={() => handleDeleteComment(comment.id, setToggle(false))}>delete</i>
                         <div className={style.content}>
                             <div className={style.title}>
                                 <Link to={'/users/' + comment.owner.id}>

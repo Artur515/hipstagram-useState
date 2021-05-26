@@ -38,7 +38,7 @@ const Profile = () => {
 
     // console.log(currentUser)
     if (currentUser.length !== 0) {
-        const {login, email, avatar, posts, followers, firstName, lastName} = currentUser
+        const {login, email, avatar, posts, followers, firstName, lastName,id} = currentUser
 
         return (
             <div className={style.profile}>
@@ -90,7 +90,7 @@ const Profile = () => {
                 </div>
                 <div className={style.feed_gallery}>
                     {posts.map((post) => {
-                        return <Feed key={post._id} post={post}/>
+                        return <Feed key={post._id} id={id} post={post}/>
                     })}
                 </div>
             </div>

@@ -7,6 +7,7 @@ import {Link, Redirect} from "react-router-dom";
 import React, {useState} from "react";
 import {loginCurrentUser} from "../../../../../services/authentication_service ";
 import Loader from "../../../../../helpers/loader/Loader";
+import M from "materialize-css";
 
 let schema = yup.object().shape({
     name: yup.string().required(),
@@ -35,8 +36,9 @@ const Auth = (props) => {
                     props.history.push('/users/current')
                     window.location.reload()
                 })
-                .catch(() => {
+                .catch((error) => {
                     setLoading(false)
+                    M.toast({html: error, classes: '#c628282 red darken-3'})
                 })
         } else {
             setLoading(false)
