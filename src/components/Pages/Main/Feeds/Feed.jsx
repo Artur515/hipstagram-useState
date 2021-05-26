@@ -35,10 +35,12 @@ const Feed = ({post}) => {
             M.Materialbox.getInstance(elem);
         }
         const likedStyle = {
-            color: 'red'
+            color: 'red',
+            cursor: 'pointer'
         }
         const unLikedStyle = {
-            color: 'black'
+            color: 'black',
+            cursor: 'pointer'
         }
 
         return (

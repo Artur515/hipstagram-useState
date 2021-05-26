@@ -22,7 +22,6 @@ const CommentRead = ({commentById, id}) => {
     const handleDeleteComment = (id) => {
         deleteCommentByCommentId(id)
             .then(setComments(commentById.filter((com => com.id !== id))))
-        setToggle(false)
     }
 
 
@@ -34,7 +33,8 @@ const CommentRead = ({commentById, id}) => {
             {comments.map((comment) => {
                 return (
                     <div key={comment.id}>
-                        <i className='material-icons' onClick={() => handleDeleteComment(comment.id)}>delete</i>
+                        <i className='material-icons' style={{cursor: 'pointer'}}
+                           onClick={() => handleDeleteComment(comment.id)}>delete</i>
                         <div className={style.content}>
                             <div className={style.title}>
                                 <Link to={'/users/' + comment.owner.id}>
