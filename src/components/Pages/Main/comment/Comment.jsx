@@ -31,6 +31,7 @@ const Comment = ({id}) => {
             }
         }
 
+
         useEffect(() => {
             getCommentsByPostId(id)
                 .then(response => setCommentById(response.data))
@@ -45,7 +46,8 @@ const Comment = ({id}) => {
                 <input onChange={e => setInputComment(e.target.value)} type="text" placeholder='add a comment'/>
                 <div>
                     <button onClick={handleSendComment} className='waves-effect btn' style={btnStyle}>Add comment</button>
-                    {commentById.length ? <CommentRead commentById={commentById} id={id}/> : ''}
+                    {commentById.length ?
+                        <CommentRead commentById={commentById} id={id}/> : ''}
                 </div>
             </div>
         );

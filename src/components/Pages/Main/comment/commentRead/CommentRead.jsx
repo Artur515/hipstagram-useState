@@ -12,7 +12,8 @@ const btnStyle = {
 const CommentRead = ({commentById, id}) => {
     const [comments, setComments] = useState([])
     const [toggle, setToggle] = useState(false)
-    // console.log(comments)
+
+    console.log(comments)
 
     const handleModal = (id) => {
         setComments(commentById.filter((com => com.postId === id)))
@@ -21,7 +22,7 @@ const CommentRead = ({commentById, id}) => {
 
     const handleDeleteComment = (id) => {
         deleteCommentByCommentId(id)
-            .then(setComments(comments))
+            .then(setComments(commentById.filter((com => com.id !== id))))
     }
 
 
@@ -31,7 +32,6 @@ const CommentRead = ({commentById, id}) => {
         </button>
         <div className={toggle ? 'show-on-medium' : 'hide-on-med-and-up hide-on-med-and-down'}>
             {comments.map((comment) => {
-                console.log(comment)
                 return (
                     <div key={comment.id}>
                         <i className='material-icons' onClick={() => handleDeleteComment(comment.id)}>delete</i>
