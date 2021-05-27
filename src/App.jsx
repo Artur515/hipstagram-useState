@@ -4,7 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 
 const App = () => {
     return (<div>
-        <BrowserRouter>
+        <BrowserRouter basename="/hipstagram-useState">
             <Application/>
         </BrowserRouter>
     </div>);
