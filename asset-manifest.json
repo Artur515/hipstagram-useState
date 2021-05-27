@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/hipstagram-useState/static/css/main.b1181cd5.chunk.css",
+    "main.js": "/hipstagram-useState/static/js/main.53c7cc33.chunk.js",
+    "main.js.map": "/hipstagram-useState/static/js/main.53c7cc33.chunk.js.map",
+    "runtime-main.js": "/hipstagram-useState/static/js/runtime-main.b1f2b97f.js",
+    "runtime-main.js.map": "/hipstagram-useState/static/js/runtime-main.b1f2b97f.js.map",
+    "static/js/2.b5658484.chunk.js": "/hipstagram-useState/static/js/2.b5658484.chunk.js",
+    "static/js/2.b5658484.chunk.js.map": "/hipstagram-useState/static/js/2.b5658484.chunk.js.map",
+    "index.html": "/hipstagram-useState/index.html",
+    "static/css/main.b1181cd5.chunk.css.map": "/hipstagram-useState/static/css/main.b1181cd5.chunk.css.map",
+    "static/js/2.b5658484.chunk.js.LICENSE.txt": "/hipstagram-useState/static/js/2.b5658484.chunk.js.LICENSE.txt",
+    "static/media/homeStyle.module.css": "/hipstagram-useState/static/media/friends-HomeHipstagram.ee8ea6c2.jpg",
+    "static/media/authStyle.module.css": "/hipstagram-useState/static/media/friendsLogin.945781c9.jpg",
+    "static/media/registrationStyle.module.css": "/hipstagram-useState/static/media/friendsRegistration.4f0f87de.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1f2b97f.js",
+    "static/js/2.b5658484.chunk.js",
+    "static/css/main.b1181cd5.chunk.css",
+    "static/js/main.53c7cc33.chunk.js"
+  ]
+}
