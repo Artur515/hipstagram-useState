@@ -31,9 +31,9 @@ const Profile = () => {
     }, [])
 
 
-    const handleModalFollowers = () => {
-        const modal = document.querySelector('#modal_follow')
-        M.Modal.getInstance(modal).open()
+    const handleModalFollowers = (e) => {
+        console.log(e.target)
+        // M.Modal.getInstance().open(e.target)
     }
 
     // console.log(currentUser)
@@ -66,7 +66,7 @@ const Profile = () => {
                         </h3>
                         <div className={style.posts}>
                             <h5>{posts.length}:posts</h5>
-                            <h5 onClick={() => handleModalFollowers()}
+                            <h5 onClick={(e) => handleModalFollowers(e)}
                                 className={style.posts_item}>{followers.length}:followers</h5>
                         </div>
                         {/*modal followers*/}

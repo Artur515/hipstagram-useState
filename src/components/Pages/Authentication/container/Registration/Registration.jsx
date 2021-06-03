@@ -29,7 +29,7 @@ const Registration = (props) => {
         const {name, email, password} = data;
         if (name && email && password) {
             registrationCurrentUser(name, email, password)
-                .then(history.push("/auth/login"))
+                .then(()=>history.push("/auth/login"))
                 .catch(error => {
                     M.toast({html: error, classes: '#c628282 red darken-3'})
                     history.push('/auth/registration')

@@ -32,7 +32,7 @@ const ProfileForm = () => {
     });
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         const {login, firstName, lastName, email} = data
 
         const requestBody = {
@@ -47,7 +47,7 @@ const ProfileForm = () => {
         if (login && firstName && lastName && email && avatar) {
             updateCurrentUser(requestBody)
                 .then(response => setCurrentUser(response))
-                .then(M.toast({html: "ALl CHANGED", classes: '#c628282 green darken-3'}))
+                .then(()=>M.toast({html: "ALl CHANGED", classes: '#c628282 green darken-3'}))
                 .catch(error => {
                     M.toast({html: 'Request entity too large', classes: '#c628282 red darken-3'})
                 })

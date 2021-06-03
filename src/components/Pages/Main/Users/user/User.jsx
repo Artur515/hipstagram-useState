@@ -34,8 +34,9 @@ const User = ({user}) => {
 
         return (
             <div className={style.user_card}><NavLink to={'/users/' + user._id}>
-                <div className={style.user_image}><img src={user.avatar ? user.avatar : defaultAvatar}
-                                                       alt="avatar"/></div>
+                <div className={style.user_image}>
+                    <img src={user.avatar ? user.avatar : defaultAvatar} alt="avatar"/>
+                </div>
             </NavLink>
                 <h5>{user.login}</h5>
                 <h6>{user.email}</h6>

@@ -16,7 +16,7 @@ const Posts = () => {
             formImagePost.append('title', titlePost)
             createPost(formImagePost)
                 .then((response) => setDataPost(response.data))
-                .then(M.toast({html: "YOUR ARE ADDED POST ", classes: '#c628282 green darken-3'}))
+                .then(()=>M.toast({html: "YOUR ARE ADDED POST ", classes: '#c628282 green darken-3'}))
         } else {
             M.toast({html: "NEED  TO WRITE AND ADD SOMETHING", classes: '#c628282 red darken-3'})
         }

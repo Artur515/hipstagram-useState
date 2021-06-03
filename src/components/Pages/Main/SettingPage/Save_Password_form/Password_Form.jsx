@@ -17,7 +17,7 @@ const Password = () => {
 
         updatePassword(data)
             .then(response => console.log(response))
-            .then(M.toast({html: "YOUR ARE ADDED NEW PASSWORD ", classes: '#c628282 green darken-3'}))
+            .then(()=>M.toast({html: "YOUR ARE ADDED NEW PASSWORD ", classes: '#c628282 green darken-3'}))
             .catch(error => {
                 M.toast({html: "SOMETHING WRONG", classes: '#c628282 red darken-3'})
             })

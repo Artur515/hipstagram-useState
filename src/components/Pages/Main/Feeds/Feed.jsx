@@ -7,7 +7,6 @@ import Comment from "../comment/Comment";
 
 const Feed = ({post, id}) => {
         // for likes color 'red' or 'black'
-        // console.log(post)
 
         //my custom state for origin user posts
         const [watchLikes, setWatchLikes] = useState(post.likes.length)
@@ -34,10 +33,6 @@ const Feed = ({post, id}) => {
             M.AutoInit();
         });
 
-        const handleImage = () => {
-            const elem = document.querySelector('#image')
-            M.Materialbox.getInstance(elem);
-        }
         const likedStyle = {
             color: 'red',
             cursor: 'pointer'
@@ -53,8 +48,6 @@ const Feed = ({post, id}) => {
                     <h6>{post.ownerId}</h6>
                     <div className="card-image">
                         <img className="materialboxed"
-                             id='image'
-                             onClick={handleImage}
                              src={post.imgUrl}
                              alt="post"/>
                     </div>

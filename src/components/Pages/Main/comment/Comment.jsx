@@ -14,7 +14,6 @@ const Comment = ({id}) => {
         const [inputComment, setInputComment] = useState('')
         const [createdComment, setCreatedComment] = useState('')
         const [commentById, setCommentById] = useState([])
-        const inputs = document.querySelectorAll('input')
 
 
         const handleSendComment = () => {
@@ -23,8 +22,7 @@ const Comment = ({id}) => {
             } else {
                 createComment({postId: id, text: inputComment})
                     .then(response => setCreatedComment(response.data))
-                    .then(inputs.forEach(input => input.value = ''))
-                    .then(M.toast({html: "YOUR ARE ADDED COMMENT ", classes: '#c628282 green darken-3'}))
+                    .then(() => M.toast({html: "YOUR ARE ADDED COMMENT ", classes: '#c628282 green darken-3'}))
                     .catch(error => {
                         M.toast({html: error, classes: '#c628282 red darken-3'})
                     })

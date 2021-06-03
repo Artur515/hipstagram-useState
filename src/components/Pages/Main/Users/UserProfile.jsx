@@ -36,8 +36,8 @@ const UserProfile = (props) => {
 
 
         const handleModalFollowers = () => {
-            const modal = document.querySelector('#modal1')
-            M.Modal.getInstance(modal).open()
+            console.log('some need')
+            // M.Modal.getInstance().open()
         }
 
 
