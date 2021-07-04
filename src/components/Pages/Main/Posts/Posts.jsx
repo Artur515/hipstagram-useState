@@ -7,7 +7,7 @@ const Posts = () => {
     const [titlePost, setTitlePost] = useState('')
     const [imagePost, setImagePost] = useState('')
     const [dataPost, setDataPost] = useState({})
-    console.log(dataPost)
+    // console.log(dataPost)
 
     const handleSubmitPost = () => {
         if (titlePost && imagePost) {

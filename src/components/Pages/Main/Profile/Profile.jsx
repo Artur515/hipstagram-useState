@@ -18,8 +18,8 @@ const Profile = () => {
     });
 
     const handleModal = () => {
-        const modal = document.querySelector('#modal')
-        M.Modal.getInstance(modal).open()
+    //
+        console.log('modal')
     }
 
 
